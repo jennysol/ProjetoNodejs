@@ -8,13 +8,15 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts",
-    "start":"ts-node src/index.ts",
+    "start": "ts-node src/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "pg": "^8.3.0",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "uuid": "^8.3.0",
+    "uuidv4": "^6.2.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.7",
