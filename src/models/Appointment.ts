@@ -1,17 +1,14 @@
-import { uuid } from 'uuidv4';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('appointments') // Siginifica que a classe é um parametro que estamos passando para a nossa entidade
 class Appointment {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column()
   provider: string;
 
+  @Column('timestamp with time zone')
   date: Date;
-
-  constructor({provider , date }: Omit<Appointment, 'id'>) {
-    this.id = uuid();
-    this.provider = provider;
-    this.date = date;
-  }
 }
-
 export default Appointment;
