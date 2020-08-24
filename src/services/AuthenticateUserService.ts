@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
 
@@ -11,11 +12,12 @@ interface Request {
 
 interface Response {
   user: User;
+  token: string;
 }
 
 
 class AuthenticateUserService {
-  public async execute({ email, password}: Request): Promise<Response> {
+  public async execute({ email, password }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
     const user = await usersRepository.findOne({ where: { email }});
@@ -32,8 +34,14 @@ class AuthenticateUserService {
     }
     // Usúario atentificado
 
+    const token = sign({}, 'b976171513f681ccfdbbb929138d9f36', {
+      subject: user.id,
+      expiresIn: '1d',
+    });// Criptografa mas não muito seguro
+
     return {
       user,
+      token,
     };
   }
 }
