@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authConfig from '../config/auth';
 
 import User from '../models/User';
 
@@ -34,9 +35,11 @@ class AuthenticateUserService {
     }
     // Usúario atentificado
 
-    const token = sign({}, 'b976171513f681ccfdbbb929138d9f36', {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });// Criptografa mas não muito seguro
 
     return {
