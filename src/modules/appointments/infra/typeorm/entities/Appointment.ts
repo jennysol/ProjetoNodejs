@@ -1,11 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn} from 'typeorm';
+import { 
+  Entity,
+  Column, 
+  PrimaryGeneratedColumn, 
+  CreateDateColumn, 
+  UpdateDateColumn, 
+  ManyToOne, 
+  JoinColumn
+} from 'typeorm';
 
-import User from '../../../../users/infra/typeorm/entities/User';
-/**
- * Um para um )(OntoOne)
- * Um para Muitos (OneToMany)
- * Muitos para Muitos (ManyToMany)
- */
+import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('appointments') // Siginifica que a classe é um parametro que estamos passando para a nossa entidade
 class Appointment {
@@ -23,9 +26,9 @@ class Appointment {
   date: Date;
 
   @CreateDateColumn()
-  created_at: string; // DATE
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: string; // DATE
+  updated_at: Date; 
 }
 export default Appointment;
