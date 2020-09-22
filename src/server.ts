@@ -6,8 +6,8 @@ import 'express-async-errors';
 import routes from './routes';
 import uploadConfig from './config/upload';
 
-import './database';
-import AppError from './erros/AppError';
+import './shared/database';
+import AppError from './shared/erros/AppError';
 
 const app = express();
 
