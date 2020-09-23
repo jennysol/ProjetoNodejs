@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn} from 'typeorm';
 
-import User from '../../../../users/entities/User';
+import User from '../../users/infra/typeorm/entities/User';
 /**
  * Um para um )(OntoOne)
  * Um para Muitos (OneToMany)
