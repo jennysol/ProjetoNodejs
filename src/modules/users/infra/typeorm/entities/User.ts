@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {
+   Entity, 
+   Column, 
+   PrimaryGeneratedColumn, 
+   CreateDateColumn, 
+   UpdateDateColumn
+  } from 'typeorm';
 
 //KISS - Keep It Simple & Stupid
 
@@ -14,10 +20,10 @@ class User {
   email: string;
 
   @Column()
-  avatar: string;
+  password: string;
 
   @Column()
-  password: string;
+  avatar: string;
 
   @CreateDateColumn()
   created_at: string;
