@@ -1,4 +1,5 @@
 import AppError from '@shared/erros/AppError';
+
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
 import CreateAppointmentService from './CreateAppointmentService';
 
