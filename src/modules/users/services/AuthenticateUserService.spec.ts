@@ -33,4 +33,23 @@ describe('AthenticateUser', () => {
     expect(response.user).toEqual(user);
 
   });
+
+    it('should not be able to authenticate with non existing user', async () => {
+      const fakeUsersRepository = new FakeUsersRepository();
+      const fakeHashProvider = new FakeHashProvider();
+  
+      const authenticateUser = new AuthenticateUserService(fakeUsersRepository, 
+        fakeHashProvider,
+      );
+  
+      const response = await authenticateUser.execute({
+          email: 'jenny10@gmail.com',
+          password: '123456', 
+      });
+  
+      expect(authenticateUser.execute({
+        email: 'jenny10@gmail.com',
+        password: '123456', 
+    })).rejects.toBeInstanceOf(AppError);
+    });
 });
